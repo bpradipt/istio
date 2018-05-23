@@ -89,15 +89,15 @@ required = [
 # for details.
 [[override]]
   name = "k8s.io/client-go"
-  branch = "release-6.0"
+  branch = "release-7.0"
 
 [[override]]
   name = "k8s.io/apimachinery"
-  branch = "release-1.9"
+  branch = "release-1.10"
 
 [[override]]
   name = "k8s.io/api"
-  branch = "release-1.9"
+  branch = "release-1.10"
 
 [[override]]
   name = "github.com/Azure/go-autorest"
@@ -105,11 +105,11 @@ required = [
 
 [[constraint]]
   name = "k8s.io/apiextensions-apiserver"
-  branch = "release-1.9"
+  branch = "release-1.10"
 
 [[override]]
   name = "k8s.io/kubernetes"
-  branch = "release-1.9"
+  branch = "release-1.10"
 
 # TODO(https://github.com/istio/istio/issues/2413). Keep
 # k8s.io/ingress-nginx pinned to an older version until istio ingress code

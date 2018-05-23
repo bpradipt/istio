@@ -119,6 +119,9 @@ containers:
       [[ end -]]
       runAsUser: 1337
   restartPolicy: Always
+[[ if eq .ShareProcessNamespace true -]]
+shareProcessNamespace: true
+[[ end -]]
   volumeMounts:
   - mountPath: /etc/istio/proxy
     name: istio-envoy

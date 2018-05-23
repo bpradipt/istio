@@ -378,6 +378,17 @@ func updateAnnotation(target map[string]string, added map[string]string) (patch 
 	return patch
 }
 
+func updatePIDShare(value bool) (patch []rfc6902PatchOperation) {
+
+        op := "add"
+        patch = append(patch, rfc6902PatchOperation{
+                         Op:    op,
+                         Path:  "/spec/shareProcessNamespace",
+                         Value: value,
+        })
+        return patch
+}
+
 func createPatch(pod *corev1.Pod, prevStatus *SidecarInjectionStatus, annotations map[string]string, sic *SidecarInjectionSpec) ([]byte, error) {
 	var patch []rfc6902PatchOperation
 
@@ -392,6 +403,9 @@ func createPatch(pod *corev1.Pod, prevStatus *SidecarInjectionStatus, annotation
 	patch = append(patch, addVolume(pod.Spec.Volumes, sic.Volumes, "/spec/volumes")...)
 
 	patch = append(patch, updateAnnotation(pod.Annotations, annotations)...)
+	patch = append(patch, updatePIDShare(sic.ShareProcessNamespace)...)
+
+	log.Infof("createPatch: patch=%+v\n", patch)
 
 	return json.Marshal(patch)
 }

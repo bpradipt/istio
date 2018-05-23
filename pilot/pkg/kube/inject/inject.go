@@ -87,6 +87,7 @@ type SidecarInjectionSpec struct {
 	InitContainers []v1.Container `yaml:"initContainers"`
 	Containers     []v1.Container `yaml:"containers"`
 	Volumes        []v1.Volume    `yaml:"volumes"`
+    ShareProcessNamespace bool `yaml:"shareProcessNamespace"`
 }
 
 // SidecarTemplateData is the data object to which the templated
