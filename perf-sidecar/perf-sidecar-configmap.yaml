@@ -1,0 +1,17 @@
+kind: ConfigMap
+metadata:
+  name: perf
+  namespace: istio-system
+apiVersion: v1
+data:
+  config: |
+    policy: enabled
+    template: |-
+      containers:
+      - name: perf
+        image: bpradipt/perf:4.4
+        stdin: true
+        tty: true
+        securityContext:
+            privileged: true
+      ShareProcessNamespace: true
