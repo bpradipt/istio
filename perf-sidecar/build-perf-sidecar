@@ -1,0 +1,20 @@
+# Pre-req
+Ensure golang is installed and GOPATH is set
+
+# Install dep
+```
+go get -u github.com/golang/dep/cmd/dep
+```
+# Download deps
+```
+dep ensure
+```
+
+# Build sidecar injector
+```
+make sidecar-injector
+
+# Build sidecar injector docker image
+```
+make docker.sidecar_injector
+```
